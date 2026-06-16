@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登山樂園</title>
+
+<style>
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    margin: 0;
+    background: #f4f8f4;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(to right, #2e7d32, #66bb6a);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+nav {
+    background: #1b5e20;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.section {
+    background: white;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hero-img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.mountain-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 280px;
+    background: #fafafa;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+footer {
+    text-align: center;
+    background: #2e7d32;
+    color: white;
+    padding: 15px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>⛰️ 登山樂園</h1>
+    <p>探索台灣美麗山林，享受自然與挑戰</p>
+</header>
+
+<nav>
+    <a href="#intro">登山介紹</a>
+    <a href="#mountains">熱門山岳</a>
+    <a href="#gear">必備裝備</a>
+    <a href="#notice">注意事項</a>
+</nav>
+
+<div class="container">
+
+    <section id="intro" class="section">
+        <h2>登山介紹</h2>
+        <img class="hero-img"
+             src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
+             alt="Mountain">
+        <p>
+            登山是一項結合運動、休閒與自然探索的活動。
+            台灣擁有超過 200 座海拔 3000 公尺以上高山，
+            從親民郊山到百岳路線，都能讓人享受壯麗景色與挑戰自我。
+        </p>
+    </section>
+
+    <section id="mountains" class="section">
+        <h2>熱門登山景點</h2>
+
+        <div class="mountain-list">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+                <div class="card-content">
+                    <h3>玉山</h3>
+                    <p>
+                        台灣最高峰，海拔 3952 公尺，
+                        為百岳之首，也是許多登山者的夢想目標。
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e">
+                <div class="card-content">
+                    <h3>雪山</h3>
+                    <p>
+                        台灣第二高峰，以壯觀黑森林與圈谷景觀聞名。
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e">
+                <div class="card-content">
+                    <h3>合歡山</h3>
+                    <p>
+                        入門百岳首選，交通便利，
+                        適合觀星、賞日出及高山健行。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="gear" class="section">
+        <h2>🎒 必備裝備</h2>
+        <ul>
+            <li>登山背包</li>
+            <li>登山鞋</li>
+            <li>保暖衣物</li>
+            <li>雨衣或防水外套</li>
+            <li>頭燈與備用電池</li>
+            <li>飲用水與糧食</li>
+            <li>急救包</li>
+            <li>手機與行動電源</li>
+        </ul>
+    </section>
+
+    <section id="notice" class="section">
+        <h2>⚠️ 登山注意事項</h2>
+        <ol>
+            <li>出發前查看天氣預報。</li>
+            <li>規劃路線並告知親友行程。</li>
+            <li>遵守無痕山林原則。</li>
+            <li>攜帶足夠飲水與糧食。</li>
+            <li>量力而為，切勿勉強攻頂。</li>
+            <li>高山地區注意失溫及高山症。</li>
+        </ol>
+    </section>
+
+</div>
+
+<footer>
+    © 2026 登山樂園 Hiking Adventure
+</footer>
+
+</body>
+</html>
