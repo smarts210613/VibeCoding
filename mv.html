@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI MV 世代引領者 - 全球招商計畫</title>
+    <style>
+        /* 基礎樣式重設 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* 全螢幕滿版 YouTube 背景容器 */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* 滿版 iframe 縮放核心技術，確保在所有螢幕比例下都滿版且不留黑邊 */
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* 16:9 比例 */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 比例 */
+            transform: translate(-50%, -50%);
+        }
+
+        /* 深色遮罩：提升前方文字的可讀性與科技質感 */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 0, 40, 0.6) 100%);
+        }
+
+        /* 前景內容容器 */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 導覽列 */
+        header {
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff007f;
+        }
+
+        /* 主視覺文案區 */
+        main {
+            padding: 0 50px;
+            max-width: 800px;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+        }
+
+        .tagline {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: #00f0ff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-shadow: 0px 0px 20px rgba(255, 0, 127, 0.5);
+        }
+
+        h1 span {
+            background: linear-gradient(45deg, #00f0ff, #ff007f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        /* 招商主動效按鈕 */
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
+            border-radius: 50px;
+            box-shadow: 0 5px 30px rgba(255, 0, 127, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0, 240, 255, 0.6);
+            background: transparent;
+            border-color: #00f0ff;
+            color: #00f0ff;
+        }
+
+        /* 頁尾資訊與數據 */
+        footer {
+            padding: 40px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            gap: 50px;
+        }
+
+        .stat-item h3 {
+            font-size: 28px;
+            color: #00f0ff;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 12px;
+            color: #aaa;
+            letter-spacing: 1px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* RWD 響應式網頁設計 */
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            main { padding: 0 20px; }
+            h1 { font-size: 2.5rem; }
+            footer {
+                flex-direction: column;
+                gap: 30px;
+                padding: 30px 20px;
+                text-align: center;
+            }
+            .stats { width: 100%; justify-content: space-around; }
+        }
+
+        /* 作品集展示區塊樣式 */
+        .portfolio-section {
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px 50px;
+            border-top: 1px solid rgba(255, 0, 127, 0.3);
+        }
+
+        .portfolio-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(45deg, #00f0ff, #ff007f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-item {
+            position: relative;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 0, 127, 0.3);
+            transition: all 0.3s ease;
+            aspect-ratio: 9 / 16;
+        }
+
+        .video-item:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .video-item iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .video-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            color: #00f0ff;
+            padding: 20px 15px 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-section {
+                padding: 50px 20px;
+            }
+            .portfolio-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            .portfolio-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-background">
+        <iframe src="https://www.youtube.com/embed/LwLXRVJvMN0?autoplay=1&mute=1&loop=1&playlist=LwLXRVJvMN0&controls=0&showinfo=0&rel=0&enablejsapi=1&modestbranding=1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="video-overlay"></div>
+
+    <div class="content-wrapper">
+        
+        <header>
+            <div class="logo">AI.MV STUDIO</div>
+            <nav>
+                <a href="#about">關於技術</a>
+                <a href="#market">市場前景</a>
+                <a href="#join">合夥招商</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="tagline">Next-Gen AI Music Video Production</div>
+            <h1>用AI重新定義音樂視覺<br><span>全面啟動全球招商計畫</span></h1>
+            <p class="description">
+                突破傳統製片千萬浪費！我們利用前沿頂級 AI 技術，秒級生成好萊塢級 MV 視覺。網羅全球音樂人、影視基地與資本巨頭，誠邀您成為我們的核心合夥人，共同瓜分百億產值的虛擬娛樂新藍海。
+            </p>
+            <a href="mailto:invest@aimvstudio.com?subject=AI MV 招商合作諮詢" class="cta-button">立即獲取招商白皮書</a>
+        </main>
+
+        <section class="portfolio-section">
+            <h2>作品集展示</h2>
+            <div class="portfolio-gallery">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/h7hM5BlOcMY?autoplay=1&mute=1&loop=1&playlist=h7hM5BlOcMY&controls=0&modestbranding=1&showinfo=0&rel=0" 
+                            allow="autoplay" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-label">VOBO皮鞋</div>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/bcFnNsTVntk?autoplay=1&mute=1&loop=1&playlist=bcFnNsTVntk&controls=0&modestbranding=1&showinfo=0&rel=0" 
+                            allow="autoplay" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-label">SHARK 鯊克防水鞋</div>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/n9VTjZdNvEQ?autoplay=1&mute=1&loop=1&playlist=n9VTjZdNvEQ&controls=0&modestbranding=1&showinfo=0&rel=0" 
+                            allow="autoplay" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-label">黑武士鞋</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>90% +</h3>
+                    <p>製作成本節省</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4K / 60FPS</h3>
+                    <p>超高畫質無縫輸出</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100M +</h3>
+                    <p>潛在音樂人市場</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 AI.MV STUDIO. All Rights Reserved. 全球招商部
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
